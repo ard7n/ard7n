@@ -3,4 +3,3 @@
 
 This site is a collection of my work as I transition from college to a career in geospatial analysis and mapping. 
 
-Thank you for reading! ✨
