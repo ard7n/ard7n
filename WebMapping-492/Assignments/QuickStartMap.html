@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <title>Arden Culver | University of Oregon Mapping</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!--    Include the reference to the Mapbox JavaScript here in the <head> of the page  (Part I.1)  -->
+      <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <!--    Include the reference to the Mapbox CSS here in between <head> tags    (Part I.2) -->
+      <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        /* Insert the additional CSS code here between the <style> tags  (Part I.4)   */
+          body { margin:0; padding:0; }
+          #map { position:absolute; top:0; bottom:0; width:100%; }
+          #title { z-index: 9999; 
+         background-color:white; 
+         color: hotpink;
+         opacity: 85%; 
+         text-align: center;
+         margin-top: 50 px;
+         padding-top: 10px;
+         height: 150px}
+    </style>
+  </head>
+
+  <body>
+    <!--  Insert the map div here in the <body> of the page  (Part I)  -->
+      <div id='map'></div>
+    <!--  Insert the title div here (part V) -->
+    <div id='title'>
+      <h1>My Map of Portland, Oregon</h1>
+      <h2>By: Arden Culver</h2>
+</div>
+    <script>
+        // Insert the JavaScript within the <script> tags, within the body   
+        // Start with the Mapbox access token here (Part 2.1)
+        mapboxgl.accessToken =  'pk.eyJ1IjoiYXJkN24iLCJhIjoiY205MDRrdWpyMDN3djJrcHFvZ3AwdTYzdiJ9.q1MmlJOwhFlbNskU7YCtmQ';
+        // Then initialize the map here (Part 2.2)
+        var map = new mapboxgl.Map({
+     container: 'map', // id of a div on your page, where the map will be inserted
+     style: 'mapbox://styles/mapbox/dark-v11', // stylesheet location
+     center: [-122.6788, 45.5212], // starting position 
+     zoom: 11 // starting zoom 
+ });
+        // Add popups for markers here. Yes, before the markers!  (part IV)
+        var popup = new mapboxgl.Popup({ offset: 25 })
+     .setHTML('Portland!');
+     
+        // Add any other variables such as markers here (part III)
+        var marker = new mapboxgl.Marker({color:'#cc3366'
+        })
+   .setLngLat([-122.6788, 45.5212]) // starting position [lng, lat] 
+   .setPopup(popup) //add the popup with the variable name 'popup' to the marker 
+   .addTo(map);
+   var popup_layer = new mapboxgl.Popup({closeOnClick: true, anchor: 'left'}) 
+     .setLngLat([-122.67, 45.53]) //popup coordinates
+     .setHTML('<h2>Welcome to Portland!</h>') //popup text
+     .addTo(map); //add this popup to the map!
+   var marker2 = new mapboxgl.Marker({color:'#00ddc0'})
+   .setLngLat([-122.711, 45.509]) // starting position [lng, lat] 
+   .addTo(map);
+   var popup_layer_zoo = new mapboxgl.Popup({
+       closeOnClick: false, anchor: 'right'
+     })
+     .setLngLat([-122.719, 45.518])
+     .setHTML('<a href="https://www.oregonzoo.org/">Oregon Zoo</a>')
+     .addTo(map);
+      
+        
+    </script>
+
+  </body>
+
+</html>
